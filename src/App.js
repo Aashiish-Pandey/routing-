@@ -3,7 +3,7 @@ import "./App.css";
 import About from "./About";
 import Shop from "./Shop";
 import Nav from "./Nav";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route ,Link} from "react-router-dom";
 
 const User = ({match})=>{
 
@@ -16,6 +16,22 @@ function App() {
   return (
     <Router>
       <div className ='App'>
+
+      <ul>
+        <li>
+        <Link to ="/">Home</Link>
+        </li>
+        <li>
+        <Link to ="/about">About</Link>
+        </li>
+        <li>
+        <Link to ="/user/ashish">Ashish</Link>
+        </li>
+        <li>
+        <Link to ="/about/pandey">pandey</Link>
+        </li>
+        
+      </ul>
         <Route path ="/" exact render = {
           ()=>{
             return(<h1>Welcome Home</h1>)
