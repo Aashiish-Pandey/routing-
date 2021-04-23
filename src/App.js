@@ -1,21 +1,33 @@
-import React from "react";
+import React, {useState} from "react";
 import "./App.css";
 import About from "./About";
 import Shop from "./Shop";
 import Nav from "./Nav";
-import { BrowserRouter as Router, Switch, Route ,Link,NavLink} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route ,Link,NavLink,Redirect} from "react-router-dom";
 
-const User = ({match})=>{
+const User = ({username})=>{
 
-  return (
-    <h1>User {match.params.username}</h1>
+ return (
+    <h1>User {username}</h1>
   )
 }
 
 function App() {
+
+  var [loggedIn,setloggedIn] = useState(false)
+
+  let loginHandler = ()=> {
+
+    setloggedIn(prevLoggedIn=>!prevLoggedIn)
+  }
+
+
+
   return (
     <Router>
       <div className ='App'>
+
+        <h1>{loggedIn}</h1>
 
       <ul>
         <li>
@@ -40,6 +52,7 @@ function App() {
         </li>
         
       </ul>
+        <input type = "button" value = {loggedIn? "logout" :"login"}onClick ={()=>loginHandler()} />
         <Route path ="/" exact render = {
           ()=>{
             return(<h1>Welcome Home</h1>)
@@ -51,7 +64,12 @@ function App() {
           }
         }/>
 
-        <Route path = "/user/:username" exact strict component ={User}/>
+        <Route path = "/user/:username" exact render = {({match})=> (
+
+          loggedIn? <User username = {match.params.username}/> : <Redirect to = "/" />
+        )
+
+        }/>
       </div>
     </Router>
   );
