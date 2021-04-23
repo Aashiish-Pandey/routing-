@@ -3,7 +3,7 @@ import "./App.css";
 import About from "./About";
 import Shop from "./Shop";
 import Nav from "./Nav";
-import { BrowserRouter as Router, Switch, Route ,Link} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route ,Link,NavLink} from "react-router-dom";
 
 const User = ({match})=>{
 
@@ -19,16 +19,24 @@ function App() {
 
       <ul>
         <li>
-        <Link to ="/">Home</Link>
+        <NavLink to ="/" exact activeStyle ={{
+          color:"red"
+        }}>Home</NavLink>
         </li>
         <li>
-        <Link to ="/about">About</Link>
+        <NavLink to ="/about" exact activeStyle ={{
+          color:"red"
+        }}>About</NavLink>
         </li>
         <li>
-        <Link to ="/user/ashish">Ashish</Link>
+        <NavLink to ="/user/ashish" exact activeStyle ={{
+          color:"red"
+        }}>Ashish</NavLink>
         </li>
         <li>
-        <Link to ="/about/pandey">pandey</Link>
+        <NavLink to ="/about/pandey" exact activeStyle ={{
+          color:"red"
+        }}>pandey</NavLink>
         </li>
         
       </ul>
