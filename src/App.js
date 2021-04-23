@@ -5,6 +5,13 @@ import Shop from "./Shop";
 import Nav from "./Nav";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+const User = ({match})=>{
+
+  return (
+    <h1>User {match.params.username}</h1>
+  )
+}
+
 function App() {
   return (
     <Router>
@@ -20,18 +27,13 @@ function App() {
           }
         }/>
 
-        <Route path = "/user" component ={User}/>
+        <Route path = "/user/:username" exact strict component ={User}/>
       </div>
     </Router>
   );
 }
 
-const User = ()=>{
 
-  return (
-    <h1>User</h1>
-  )
-}
 
 
 
