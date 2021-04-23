@@ -19,9 +19,18 @@ function App() {
             return(<h1>About</h1>)
           }
         }/>
+
+        <Route path = "/user" component ={User}/>
       </div>
     </Router>
   );
+}
+
+const User = ()=>{
+
+  return (
+    <h1>User</h1>
+  )
 }
 
 
